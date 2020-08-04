@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TodoCreateRequest;
 use App\Todo;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class TodoController extends Controller
 {
@@ -23,7 +21,13 @@ class TodoController extends Controller
         return redirect()->back()->with('message', 'Todo Created Successfully');
     }
 
-    public function edit() {
-        return view('todos.edit');
+    public function edit(Todo $todo) {
+        return view('todos.edit', compact('todo'));
+    }
+
+    public function update(TodoCreateRequest $request, Todo $todo) {
+        $todo->update(['title' => $request->title]);
+        return redirect(route('todo.index'))->with('message', 'Update Successful!');
+//        return view('todos.edit', compact('todo'));
     }
 }
