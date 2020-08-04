@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return View::make('welcome');
+});
 
-Route::get('/', 'PagesController@index');
+Route::get('/user', 'UserController@index');
+
+Route::post('/upload', 'UserController@uploadAvatar');
 
 Route::get('/about', function () {
     return view('pages.about');
@@ -26,3 +30,7 @@ Route::get('/about', function () {
 Route::get('/users/{id}', function ($id) {
     return 'This is a user ' . $id;
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
