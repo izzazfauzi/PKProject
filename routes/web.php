@@ -1,9 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\View;
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +11,11 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('/todos', 'TodoController@index');
+Route::get('/todos/create', 'TodoController@create');
+Route::post('/todos/create', 'TodoController@store');
+Route::get('/todos/edit', 'TodoController@edit');
+
 Route::get('/', function () {
     return View::make('welcome');
 });
@@ -22,14 +23,6 @@ Route::get('/', function () {
 Route::get('/user', 'UserController@index');
 
 Route::post('/upload', 'UserController@uploadAvatar');
-
-Route::get('/about', function () {
-    return view('pages.about');
-});
-
-Route::get('/users/{id}', function ($id) {
-    return 'This is a user ' . $id;
-});
 
 Auth::routes();
 
