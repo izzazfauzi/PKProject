@@ -10,11 +10,21 @@
     <ul class="my-3">
         <x-alert/>
         @foreach($todos as $todo)
-            <li class="py-2 flex justify-content-md-center">
-                <p>{{$todo->title}}</p>
-                <a href="{{'/todos/'.$todo->id.'/edit'}}">
-                    <button class="py-1 px-1 mx-4 bg-success rounded-sm text-white">Edit</button>
-                </a>
+            <li class="text-xl py-2 px-3 flex justify-content-md-between">
+                @if($todo->completed)
+                    <p class="line-through">{{$todo->title}}</p>
+                @else
+                    <p>{{$todo->title}}</p>
+                @endif
+                <div>
+                    <a href="{{'/todos/'.$todo->id.'/edit'}}" class="py-1 px-1 mx-2 cursor-pointer text-orange-400"><span class="fas fa-edit px-2"/>
+                    </a>
+                    @if($todo->completed)
+                        <span class="fas fa-check py-2 px-2 text-green-500 cursor-pointer"/>
+                    @else
+                        <span onclick="event.preventDefault(); console.log('hello')" class="fas fa-check py-2 px-2 text-gray-400 cursor-pointer"/>
+                    @endif
+                </div>
             </li>
         @endforeach
     </ul>
