@@ -11,15 +11,9 @@ use \Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/todos', 'TodoController@index')->name('todo.index');
-Route::get('/todos/create', 'TodoController@create');
-Route::post('/todos/create', 'TodoController@store');
-Route::get('/todos/{todo}/edit', 'TodoController@edit');
-Route::patch('/todos/{todo}/update', 'TodoController@update')->name('todo.update');
+Route::resource('/todo', 'TodoController');
 Route::put('/todos/{todo}/complete', 'TodoController@complete')->name('todo.complete');
 Route::delete('/todos/{todo}/incomplete', 'TodoController@incomplete')->name('todo.incomplete');
-Route::delete('/todos/{todo}/delete', 'TodoController@delete')->name('todo.delete');
 
 Route::get('/', function () {
     return View::make('welcome');
