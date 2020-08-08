@@ -11,8 +11,9 @@
     <form class="pt-4 m-auto" action="{{route('todo.store')}}" method="post">
         @csrf
         <div>
-            <input class="mx-1 py-2 px-2 w-50 border" type="text" name="title"/>
-            <input class="mx-1 py-2 w-25 border rounded" type="submit" value="create"/>
+            <input class="mx-1 mb-2 py-2 px-2 w-75 border" type="text" name="title" placeholder="Title"/>
+            <textarea class="mx-1 mb-2 py-2 px-2 h-100 w-75 border" type="text" name="description" placeholder="Description"></textarea>
+            <input class="mx-1 py-2 w-25 border rounded bg-white" type="submit" value="create"/>
         </div>
     </form>
 @endsection

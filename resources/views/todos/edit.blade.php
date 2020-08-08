@@ -12,8 +12,9 @@
         @csrf
         @method('patch')
         <div>
-            <input class="py-2 px-2 mx-1 w-50 border rounded" type="text" name="title" value="{{$todo->title}}"/>
-            <input class="py-2 mx-1 w-25 border rounded-sm" type="submit" value="update"/>
+            <input class="py-2 px-2 mb-2 mx-1 w-75 border rounded" type="text" name="title" value="{{$todo->title}}"/>
+            <textarea class="mx-1 mb-2 py-2 px-2 w-75 border" type="text" name="description">{{$todo->description}}</textarea>
+            <input class="py-2 mb-2 mx-1 w-25 border rounded-sm bg-white" type="submit" value="update"/>
         </div>
     </form>
 
