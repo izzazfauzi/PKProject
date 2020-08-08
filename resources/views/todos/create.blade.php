@@ -12,7 +12,13 @@
         @csrf
         <div>
             <input class="mx-1 mb-2 py-2 px-2 w-75 border" type="text" name="title" placeholder="Title"/>
-            <textarea class="mx-1 mb-2 py-2 px-2 h-100 w-75 border" type="text" name="description" placeholder="Description"></textarea>
+            <textarea class="mx-1 mb-3 py-2 px-2 h-100 w-75 border" type="text" name="description" placeholder="Description"></textarea>
+            <div class="flex justify-content-between pb-2">
+                <h1 class="text-md mx-20 py-1 mr-2">Add step(s) if required</h1>
+                <span class="fas fa-plus cursor-pointer text-secondary mx-20 pt-1 w-auto text-md"></span>
+            </div>
+            @livewire('counter')
+            <input class="mx-1 mb-3 py-2 px-2 w-75 border" type="text" name="step" placeholder="Describe Step"/>
             <input class="mx-1 py-2 w-25 border rounded bg-white" type="submit" value="create"/>
         </div>
     </form>

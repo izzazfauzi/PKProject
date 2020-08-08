@@ -14,9 +14,9 @@
                     @include('todos.complete-button')
                 </div>
                 @if($todo->completed)
-                    <p class="line-through w-2/3">{{$todo->title}}</p>
+                    <a class="line-through w-2/3 cursor-pointer" href="{{route('todo.show', $todo->id)}}">{{$todo->title}}</a>
                 @else
-                    <p class="w-2/3">{{$todo->title}}</p>
+                    <a class="w-2/3 cursor-pointer" href="{{route('todo.show', $todo->id)}}">{{$todo->title}}</a>
                 @endif
                 <div>
                     <a href="{{route('todo.edit', $todo->id)}}" class="py-1 px-1 mx-2 cursor-pointer text-orange-400"><span class="fas fa-edit px-2"/>
