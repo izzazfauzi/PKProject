@@ -22,7 +22,7 @@ class TodoController extends Controller
 
     public function store(TodoCreateRequest $request) {
         auth()->user()->todos()->create($request->all());
-        return redirect()->back()->with('message', 'Todo Created Successfully');
+        return redirect(route('todo.index'))->with('message', 'Todo Created Successfully');
     }
 
     public function edit(Todo $todo) {
@@ -36,16 +36,16 @@ class TodoController extends Controller
 
     public function complete(Todo $todo) {
         $todo->update(['completed' => true]);
-        return redirect()->back()->with('message', 'Task Mark As Complete!');
+        return redirect(route('todo.index'))->with('message', 'Task Mark As Complete!');
     }
 
     public function incomplete(Todo $todo) {
         $todo->update(['completed' => false]);
-        return redirect()->back()->with('message', 'Task Mark As Incomplete!');
+        return redirect(route('todo.index'))->with('message', 'Task Mark As Incomplete!');
     }
 
     public function destroy(Todo $todo) {
         $todo->delete();
-        return redirect()->back()->with('message', 'Task Deleted!');
+        return redirect(route('todo.index'))->with('message', 'Task Deleted!');
     }
 }

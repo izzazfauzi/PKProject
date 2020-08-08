@@ -1,18 +1,20 @@
 @extends('todos.layout')
 
 @section('content')
-    <h1 class="text-2xl border-bottom pb-3">Update To-Do</h1>
+    <div class="flex justify-content-between border-bottom pb-3">
+        <h1 class="text-2xl px-4 py-1 mr-2">Update To-Do</h1>
+        <a href="{{route('todo.index')}}" class="px-4 text-2xl">
+            <span class="fas fa-arrow-left text-secondary"/>
+        </a>
+    </div>
     <x-alert/>
     <form class="pt-4 m-auto" action="{{route('todo.update', $todo->id)}}" method="post">
         @csrf
         @method('patch')
         <div>
-            <input class="py-2 px-1 w-50 border rounded" type="text" name="title" value="{{$todo->title}}"/>
-            <input class="py-2 px-1 w-25 border rounded-sm" type="submit" value="update"/>
+            <input class="py-2 px-2 mx-1 w-50 border rounded" type="text" name="title" value="{{$todo->title}}"/>
+            <input class="py-2 mx-1 w-25 border rounded-sm" type="submit" value="update"/>
         </div>
-        <a href="{{route('todo.index')}}">
-            <button type="button" class="py-1 px-2 mt-2 bg-secondary rounded-sm text-white">back</button>
-        </a>
     </form>
 
 @endsection

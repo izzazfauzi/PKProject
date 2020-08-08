@@ -1,22 +1,22 @@
 @extends('todos.layout')
 
 @section('content')
-    <div class="flex justify-center border-bottom pb-3">
-        <h1 class="text-2xl py-1 mr-2 w-2/3">To-Do List</h1>
-        <a href="{{route('todo.create')}}" class="px-3 text-2xl"><span class="fas fa-plus-circle text-primary"/>
+    <div class="flex justify-content-between border-bottom pb-3">
+        <h1 class="text-2xl px-4 py-1 mr-2">To-Do List</h1>
+        <a href="{{route('todo.create')}}" class="px-4 text-2xl"><span class="fas fa-plus-circle text-primary"/>
         </a>
     </div>
     <ul class="my-3">
         <x-alert/>
-        @foreach($todos as $todo)
+        @forelse($todos as $todo)
             <li class="text-xl py-2 px-3 flex justify-content-md-between">
                 <div>
                     @include('todos.complete-button')
                 </div>
                 @if($todo->completed)
-                    <p class="line-through">{{$todo->title}}</p>
+                    <p class="line-through w-2/3">{{$todo->title}}</p>
                 @else
-                    <p>{{$todo->title}}</p>
+                    <p class="w-2/3">{{$todo->title}}</p>
                 @endif
                 <div>
                     <a href="{{route('todo.edit', $todo->id)}}" class="py-1 px-1 mx-2 cursor-pointer text-orange-400"><span class="fas fa-edit px-2"/>
@@ -31,6 +31,8 @@
                     </form>
                 </div>
             </li>
-        @endforeach
+        @empty
+            <p>No task available, create one.</p>
+        @endforelse
     </ul>
 @endsection
