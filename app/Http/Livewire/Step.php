@@ -7,13 +7,21 @@ use Livewire\Component;
 class Step extends Component
 {
     public $steps = [];
+    public $count = 0;
 
     public function increments() {
-        $this->steps[] = count($this->steps);
+        if (!$this->steps) {
+            $this->count = 0;
+            $this->steps[] = $this->count++;
+        }
+        else {
+            $this->steps[] = $this->count++;
+        }
     }
 
     public function decrements($index) {
         unset($this->steps[$index]);
+//        dd($this->steps);
     }
 
     public function render()
