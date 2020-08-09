@@ -9,7 +9,7 @@ class Step extends Component
     public $steps = [];
 
     public function increments() {
-        $this->steps[] = count($this->steps) +1;
+        $this->steps[] = count($this->steps);
     }
 
     public function decrements($index) {
