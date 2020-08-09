@@ -6,14 +6,14 @@ use Livewire\Component;
 
 class Step extends Component
 {
-    public $steps = 0;
+    public $steps = [];
 
     public function increments() {
-        $this->steps++;
+        $this->steps[] = count($this->steps) +1;
     }
 
-    public function decrements() {
-        $this->steps--;
+    public function decrements($index) {
+        unset($this->steps[$index]);
     }
 
     public function render()
