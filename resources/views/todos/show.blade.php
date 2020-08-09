@@ -11,4 +11,15 @@
     <div class="flex justify-content-between p-4">
         <p>{{$todo->description}}</p>
     </div>
+
+    @if($todo->steps->count() > 0)
+        <div class="flex-row p-4">
+            <h3 class="flex justify-content-start">Step(s) for this task</h3>
+
+            @foreach($todo->steps as $step)
+                <p class="flex justify-content-start">{{$step->name}}</p>
+            @endforeach
+
+        </div>
+    @endif
 @endsection
